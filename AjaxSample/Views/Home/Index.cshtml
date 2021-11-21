@@ -1,8 +1,36 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ajax Samples";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Ajax Sample</h1>
+<p>Bring up console window</p>
+
+<button type="button" onclick="get();">
+    Get Weather Forecast
+</button>
+
+@section Scripts{
+<script>
+    'use strict';
+    const URL = "http://localhost:5060/api/WeatherForecast";
+
+    function get() {
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                displayResponse(this);
+            }
+        };
+        req.open("GET", URL);
+        req.send();
+    }
+
+    function displayResponse(resp){
+        console.log(resp);
+        console.log("");
+        console.log("responseText: " + resp.responseText);
+        console.log("status: " + resp.status.toString());
+        console.log("statusText: " + resp.statusText);
+    }
+</script>
+}
