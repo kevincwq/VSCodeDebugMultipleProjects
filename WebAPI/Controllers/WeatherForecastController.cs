@@ -19,7 +19,7 @@ public class WeatherForecastController : BaseApiController
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
-        return Enumerable.Range(1, 15).Select(index => new WeatherForecast
+        return Enumerable.Range(1, 12).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
             TemperatureC = Random.Shared.Next(-20, 55),
